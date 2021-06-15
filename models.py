@@ -30,7 +30,7 @@ class TimeStampedModel(models.Model):
                                    null=False, blank=True, on_delete=models.DO_NOTHING)
     updated_at = models.DateTimeField(null=False, blank=False, auto_now=True)
     updated_by = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='modified_%(class)s_set',
-                                    null=False, blank=True, on_delete=models.SET_DEFAULT)
+                                    null=False, blank=True, on_delete=models.SET_NULL)
 
     class Meta:
         abstract = True
@@ -42,8 +42,7 @@ class GeneralTimeStampedModel(models.Model):
                                    null=True, blank=True, on_delete=models.DO_NOTHING)
     updated_at = models.DateTimeField(null=False, blank=False, auto_now=True)
     updated_by = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='modified_%(class)s_set',
-                                    null=True, blank=True, on_delete=models.SET_DEFAULT)
+                                    null=True, blank=True, on_delete=models.SET_NULL)
 
     class Meta:
         abstract = True
-
